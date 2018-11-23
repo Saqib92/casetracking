@@ -19,6 +19,7 @@ import { globalData } from '../../helper/helper';
 export class ProfilePage {
 headers:any;
 loader:any;
+userId:any;
    constructor(
     public navCtrl: NavController,
     public navParams: NavParams,
@@ -28,7 +29,9 @@ loader:any;
     public loadingCtrl:LoadingController,
     private storage:Storage
     ) {
-  
+    this.storage.get('userId').then((val)=>{
+      this.userId = val;
+    })
   }
 
   presentToast(m) {
@@ -74,14 +77,15 @@ loader:any;
     }
 
     let profileObj = {
-      firstname: fName,
-      lastname: lName,
-      emila: email,
-      birthday: birthDay
+      id: this.userId,
+      name: fName,
+      last_name: lName,
+      email: email,
+      bday: birthDay
     }
      this.presentLoading();
         this.headers = {'Content-Type': 'application/json'}; 
-        this.http.post(globalData.serviceUrl + 'profile', JSON.stringify(profileObj), {headers: this.headers})
+        this.http.post(globalData.serviceUrl + 'update_profile', JSON.stringify(profileObj), {headers: this.headers})
         .map(res => res.json())
         .subscribe(data => {
           console.log(data);
