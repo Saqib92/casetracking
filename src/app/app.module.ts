@@ -10,7 +10,8 @@ import 'rxjs/add/operator/map'
 import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
 import { IonicStorageModule } from '@ionic/storage';
-
+import { FileTransfer, FileUploadOptions, FileTransferObject } from '@ionic-native/file-transfer';
+import { File } from '@ionic-native/file';
 
 @NgModule({
   declarations: [
@@ -33,6 +34,8 @@ import { IonicStorageModule } from '@ionic/storage';
   providers: [
     StatusBar,
     SplashScreen,
+    FileTransfer,
+    File,
     {provide: ErrorHandler, useClass: IonicErrorHandler,}
   ]
 })
