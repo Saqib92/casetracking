@@ -12,7 +12,7 @@ import { HomePage } from '../pages/home/home';
 import { IonicStorageModule } from '@ionic/storage';
 import { FileTransfer, FileUploadOptions, FileTransferObject } from '@ionic-native/file-transfer';
 import { File } from '@ionic-native/file';
-
+import { Camera, CameraOptions } from '@ionic-native/camera';
 @NgModule({
   declarations: [
     MyApp,
@@ -36,6 +36,7 @@ import { File } from '@ionic-native/file';
     SplashScreen,
     FileTransfer,
     File,
+    Camera,
     {provide: ErrorHandler, useClass: IonicErrorHandler,}
   ]
 })
