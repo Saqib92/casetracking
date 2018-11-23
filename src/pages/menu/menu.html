@@ -13,8 +13,9 @@
  
   <ion-content>
     <div class="menu-img">
-        <img src="assets/imgs/logo.png" class="user-img">
-        <h3>John Wane</h3>
+        <img *ngIf="pic == null" src="assets/imgs/logo.png" class="user-img">
+        <img *ngIf="pic != null" src="{{imgUrl + pic}}" class="user-img">
+        <h3>{{name}}</h3>
     </div>
     <ion-list>
       <button ion-item menuClose *ngFor="let p of pages" (click)="openPage(p)">

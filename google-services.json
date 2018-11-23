@@ -1,0 +1,42 @@
+{
+  "project_info": {
+    "project_number": "630748945174",
+    "firebase_url": "https://demoaapp-5a015.firebaseio.com",
+    "project_id": "demoaapp-5a015",
+    "storage_bucket": "demoaapp-5a015.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:630748945174:android:296625fd36c2ccfa",
+        "android_client_info": {
+          "package_name": "com.blackapps.demoapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "630748945174-o0l5cggm406l8aenohok8trd3t9g7e6u.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC0KchUC9hn-6jXGkptKbvM-YR5zw2hgtA"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

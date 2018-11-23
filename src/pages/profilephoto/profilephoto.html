@@ -16,11 +16,12 @@
 <ion-content padding>
 
 	<div class="profile">
-		<img src="assets/imgs/logo.png" class="profile-img">
+		<img *ngIf="proPic != null" src="{{imgUrl + proPic}}" class="profile-img">
+		<img *ngIf="proPic == null" src="assets/imgs/logo.png" class="profile-img">
 	</div>
 
-	<button ion-button block color="dark" icon-end>Take Photo<ion-icon name="camera"></ion-icon></button>
+	<button ion-button block color="dark" icon-end (click)="takePhoto()">Take Photo<ion-icon name="camera"></ion-icon></button>
 	<br>
-	<button ion-button block color="light" icon-end>Choose Photo<ion-icon name="camera"></ion-icon></button>
+	<button ion-button block color="light" icon-end (click)="chosePhoto()">Choose Photo<ion-icon name="camera"></ion-icon></button>
 
 </ion-content>

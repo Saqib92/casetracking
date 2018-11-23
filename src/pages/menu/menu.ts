@@ -5,6 +5,7 @@ import { NewcasePage } from './../newcase/newcase';
 import { Component, ViewChild } from '@angular/core';
 import { IonicPage, NavController, Nav } from 'ionic-angular';
 import { Storage } from '@ionic/storage';
+import { globalData } from '../../helper/helper';
 export interface PageInterface {
   title: string;
   pageName: string;
@@ -21,7 +22,9 @@ export interface PageInterface {
 export class MenuPage {
   // Basic root for our content view
   rootPage = 'TabsPage';
- 
+ pic:any;
+ name:any;
+ imgUrl:any;
   // Reference to the app's root nav
   @ViewChild(Nav) nav: Nav;
  
@@ -32,7 +35,10 @@ export class MenuPage {
     { title: 'New Case', pageName: 'NewcasePage', icon: 'shuffle' },
   ];
  
-  constructor(public navCtrl: NavController,  private storage:Storage) { }
+  constructor(public navCtrl: NavController,  private storage:Storage) { 
+    this.getmydata();
+    this.imgUrl = globalData.imagesUrl;
+  }
  
   openPage(page: PageInterface) {
     let params = {};
@@ -70,6 +76,14 @@ export class MenuPage {
     return;
   }
 
+getmydata(){
+  this.storage.get('userObject').then((val)=>{
+        if(val != null || val != undefined){
+          this.name = val.name + ' ' + val.last_name;
+          this.pic = val.profile;
+        }
+    })
+}
   logOut(){
     this.storage.clear();
     this.rootPage = 'LoginPage';

@@ -13,6 +13,9 @@ import { IonicStorageModule } from '@ionic/storage';
 import { FileTransfer, FileUploadOptions, FileTransferObject } from '@ionic-native/file-transfer';
 import { File } from '@ionic-native/file';
 import { Camera, CameraOptions } from '@ionic-native/camera';
+import { FileChooser } from '@ionic-native/file-chooser';
+import { DocumentViewer } from '@ionic-native/document-viewer';
+
 @NgModule({
   declarations: [
     MyApp,
@@ -37,6 +40,8 @@ import { Camera, CameraOptions } from '@ionic-native/camera';
     FileTransfer,
     File,
     Camera,
+    FileChooser,
+    DocumentViewer,
     {provide: ErrorHandler, useClass: IonicErrorHandler,}
   ]
 })
