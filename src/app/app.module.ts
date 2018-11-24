@@ -15,6 +15,7 @@ import { File } from '@ionic-native/file';
 import { Camera, CameraOptions } from '@ionic-native/camera';
 import { FileChooser } from '@ionic-native/file-chooser';
 import { DocumentViewer } from '@ionic-native/document-viewer';
+import { FCM } from '@ionic-native/fcm';
 
 @NgModule({
   declarations: [
@@ -42,6 +43,7 @@ import { DocumentViewer } from '@ionic-native/document-viewer';
     Camera,
     FileChooser,
     DocumentViewer,
+    FCM,
     {provide: ErrorHandler, useClass: IonicErrorHandler,}
   ]
 })
