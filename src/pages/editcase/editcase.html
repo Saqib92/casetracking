@@ -30,7 +30,9 @@
 		  <ion-label>Description:</ion-label>
 		  <ion-textarea type="text" row="7" [(ngModel)]="newDescription"></ion-textarea>
 		</ion-item>
-		<!-- 	<button ion-button block color="dark" icon-end (click)="choseFile()">Insert File (PDF)<ion-icon name="attach"></ion-icon></button> -->
+
+
+			<button ion-button block color="dark" icon-end (click)="choseFile()">Update File (PDF)<ion-icon name="attach"></ion-icon></button>
 	
 		<button ion-button block color="light" (click)="editCase(customerName, newDate, newDescription)">Save</button>
 	</ion-list>

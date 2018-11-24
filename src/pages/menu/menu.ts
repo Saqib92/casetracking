@@ -29,7 +29,7 @@ export class MenuPage {
   @ViewChild(Nav) nav: Nav;
  
   pages: PageInterface[] = [
-    { title: 'Home', pageName: 'HomePage', tabComponent: 'HomePage', index: 0, icon: 'home' },
+    { title: 'Home', pageName: 'HomePage', tabComponent: HomePage, index: 0, icon: 'home' },
     { title: 'Profile', pageName: 'ProfilePage', tabComponent: 'ProfilePage', index: 1, icon: 'person' },
     { title: 'Special', pageName: 'SpecialPage', icon: 'shuffle' },
     { title: 'New Case', pageName: 'NewcasePage', icon: 'shuffle' },

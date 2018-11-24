@@ -25,7 +25,7 @@ myData:any;
   checkLogin(){
     this.storage.get('userObject').then((val)=>{
         if(val != null || val != undefined){
-          this.nav.setRoot(HomePage);
+          this.nav.setRoot('MenuPage');
           this.myData = val;
         }
     })

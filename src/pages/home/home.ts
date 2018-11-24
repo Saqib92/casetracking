@@ -55,7 +55,7 @@ export class HomePage {
          console.log(data);
           if (data.status == true) {
             this.data = data.data;
-            this.presentToast(data.message);
+            //this.presentToast(data.message);
           }
           else{
             this.presentToast(data.message);
@@ -106,12 +106,13 @@ export class HomePage {
       });
   }
 
-  editCase(id, name, description, date){
+  editCase(id, name, description, date, file){
     let obj = {
       id: id,
-      cname: name,
+      oldname: name,
       des: description,
-      date: date
+      date: date,
+      file: file
     }
     console.log(obj);
     this.navCtrl.push('EditcasePage', {editObj: obj});
