@@ -13,7 +13,7 @@ export class MyApp {
 myData:any;
   constructor(platform: Platform, statusBar: StatusBar, splashScreen: SplashScreen,     private storage:Storage) {
     platform.ready().then(() => {
-     // this.checkLogin();
+      this.checkLogin();
       // Okay, so the platform is ready and our plugins are available.
       // Here you can do any higher level native things you might need.
       statusBar.styleDefault();

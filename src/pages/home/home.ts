@@ -106,8 +106,15 @@ export class HomePage {
       });
   }
 
-  editCase(id){
-
+  editCase(id, name, description, date){
+    let obj = {
+      id: id,
+      cname: name,
+      des: description,
+      date: date
+    }
+    console.log(obj);
+    this.navCtrl.push('EditcasePage', {editObj: obj});
 
 
   }

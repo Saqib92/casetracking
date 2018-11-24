@@ -21,7 +21,7 @@
     {{dt.customer_name}}
       <p>{{dt.description}}</p>
     <ion-icon name="eye" item-end (click)="viewDoc(dt.file)"></ion-icon>
-    <ion-icon name="create" item-end (click)="editCase(dt.id)"></ion-icon>
+    <ion-icon name="create" item-end (click)="editCase(dt.id, dt.customer_name, dt.description, dt.start_date)"></ion-icon>
     <ion-icon name="trash" item-end (click)="deleteCase(dt.id)"></ion-icon>
   </ion-item>
 </ion-list>
