@@ -7,6 +7,7 @@ import { globalData } from '../../helper/helper';
 import { Camera, CameraOptions } from '@ionic-native/camera';
 import { FileTransfer, FileUploadOptions, FileTransferObject } from '@ionic-native/file-transfer';
 import { File } from '@ionic-native/file';
+import { Events } from 'ionic-angular';
 /**
  * Generated class for the ProfilephotoPage page.
  *
@@ -35,6 +36,7 @@ proPic:any;
     private camera: Camera,
     private transfer: FileTransfer,
     private file: File,
+    public events: Events
     ) {
     this.imgUrl = globalData.imagesUrl;
 	  	this.storage.get('userObject').then((val)=>{
@@ -74,8 +76,8 @@ proPic:any;
 	this.camera.getPicture(options).then((imageData) => {
 	 // imageData is either a base64 encoded string or a file URI
 	 // If it's base64 (DATA_URL):
-	 this.proPic = imageData;
-	 this.imageUpload(this.proPic);
+	 //this.proPic = imageData;
+	 this.imageUpload(imageData);
 	 //let base64Image = 'data:image/jpeg;base64,' + imageData;
 	}, (err) => {
 	 // Handle error
@@ -94,8 +96,8 @@ proPic:any;
 	this.camera.getPicture(options).then((imageData) => {
 	 // imageData is either a base64 encoded string or a file URI
 	 // If it's base64 (DATA_URL):
-	 this.proPic = imageData;
-	 this.imageUpload(this.proPic);
+	 //this.proPic = imageData;
+	 this.imageUpload(imageData);
 	 //let base64Image = 'data:image/jpeg;base64,' + imageData;
 	}, (err) => {
 	 // Handle error
@@ -119,6 +121,8 @@ imageUpload(path) {
       let res = JSON.parse(data.response);
       if (res.success == true) {
       	this.storage.set('userObject', res.data);
+        this.events.publish('user:created', res.data);
+        this.proPic = res.data.profile;
       	this.loader.dismiss();
       }      
     }, (err) => {

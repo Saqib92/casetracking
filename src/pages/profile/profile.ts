@@ -4,6 +4,8 @@ import { Http } from '@angular/http';
 import 'rxjs/add/operator/map';
 import { Storage } from '@ionic/storage';
 import { globalData } from '../../helper/helper';
+import { Events } from 'ionic-angular';
+
 /**
  * Generated class for the ProfilePage page.
  *
@@ -20,6 +22,10 @@ export class ProfilePage {
 headers:any;
 loader:any;
 userId:any;
+fName:any;
+lName:any;
+email:any;
+birthDay:any;
    constructor(
     public navCtrl: NavController,
     public navParams: NavParams,
@@ -27,11 +33,20 @@ userId:any;
     public http: Http,
     public toastCtrl:ToastController,
     public loadingCtrl:LoadingController,
-    private storage:Storage
+    private storage:Storage,
+    public events: Events
     ) {
+    this.storage.get('userObject').then((val1)=>{
+      this.fName = val1.name;
+      this.lName = val1.last_name;
+      this.email = val1.email;
+      this.birthDay = val1.bday;
+    })
     this.storage.get('userId').then((val)=>{
       this.userId = val;
     })
+
+
   }
 
   presentToast(m) {
@@ -92,6 +107,7 @@ userId:any;
             if (data.status == true) {
               this.loader.dismiss();
               this.storage.set('userObject', data.data);
+              this.events.publish('user:created', data.data); 
               this.presentToast(data.message)       
             }
             else{

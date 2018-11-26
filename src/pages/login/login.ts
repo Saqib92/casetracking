@@ -4,7 +4,7 @@ import { Http } from '@angular/http';
 import 'rxjs/add/operator/map';
 import { Storage } from '@ionic/storage';
 import { globalData } from '../../helper/helper';
-
+import { Events } from 'ionic-angular';
 /**
  * Generated class for the LoginPage page.
  *
@@ -27,7 +27,8 @@ export class LoginPage {
     public http: Http,
     public toastCtrl:ToastController,
     public loadingCtrl:LoadingController,
-    private storage:Storage
+    private storage:Storage,
+    public events: Events
     ) {
   
   }
@@ -73,6 +74,7 @@ export class LoginPage {
           this.loader.dismiss();
           this.presentToast(data.message)
           this.storage.set('userObject', data.data);
+          this.events.publish('user:created', data.data); 
           this.storage.set('userId', data.data.id);
           this.navCtrl.setRoot('MenuPage');
         }

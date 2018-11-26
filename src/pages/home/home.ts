@@ -119,4 +119,10 @@ export class HomePage {
 
 
   }
+
+
+  viewInfo(data){
+    console.log(data);
+    this.navCtrl.push('CaseinformationPage', {data: data});
+  }
 }

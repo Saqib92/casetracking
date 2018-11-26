@@ -6,6 +6,9 @@ import { Component, ViewChild } from '@angular/core';
 import { IonicPage, NavController, Nav } from 'ionic-angular';
 import { Storage } from '@ionic/storage';
 import { globalData } from '../../helper/helper';
+import { Events } from 'ionic-angular';
+
+
 export interface PageInterface {
   title: string;
   pageName: string;
@@ -35,7 +38,7 @@ export class MenuPage {
     { title: 'New Case', pageName: 'NewcasePage', icon: 'shuffle' },
   ];
  
-  constructor(public navCtrl: NavController,  private storage:Storage) { 
+  constructor(public navCtrl: NavController,  private storage:Storage, public events: Events) { 
     this.getmydata();
     this.imgUrl = globalData.imagesUrl;
   }
@@ -83,6 +86,12 @@ getmydata(){
           this.pic = val.profile;
         }
     })
+
+  this.events.subscribe('user:created', (data) => {   // update from login
+     console.log(data);
+       this.name = data.name + ' ' + data.last_name;
+          this.pic = data.profile; 
+});
 }
   logOut(){
     this.storage.clear();

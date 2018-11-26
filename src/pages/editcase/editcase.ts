@@ -7,6 +7,8 @@ import { DocumentViewer, DocumentViewerOptions } from '@ionic-native/document-vi
 import { FileTransfer, FileUploadOptions, FileTransferObject } from '@ionic-native/file-transfer';
 import { File } from '@ionic-native/file';
 import { FileChooser } from '@ionic-native/file-chooser';
+import { HomePage } from '../home/home';
+
 /**
  * Generated class for the EditcasePage page.
  *
@@ -77,30 +79,30 @@ newfile:any;
   }
 
     pdfUpload(path) {
-	  const fileTransfer: FileTransferObject = this.transfer.create();
-	  let options: FileUploadOptions = {
-	      fileKey: 'file',
-	      fileName: '.pdf',
-	      chunkedMode: false,
-	      //mimeType: "image/jpeg",
-	    }
+  	  const fileTransfer: FileTransferObject = this.transfer.create();
+  	  let options: FileUploadOptions = {
+  	      fileKey: 'file',
+  	      fileName: '.pdf',
+  	      chunkedMode: false,
+  	      //mimeType: "image/jpeg",
+  	    }
 
-	    this.presentLoading();
-	    fileTransfer.upload(path, globalData.serviceUrl+'file_upload', options)
-	      .then((data) => {
-	      console.log(data+" Uploaded Successfully");
-	      this.presentToast('PDF Uploaded Successfully');
-	      console.log(JSON.parse(data.response));
-	      let res = JSON.parse(data.response);
-	      if (res.status == true) {
-	        this.newfile = res.data;
-	        this.loader.dismiss();
-	      }      
-	    }, (err) => {
-	      console.log(err);
-	      this.loader.dismiss();
-	      this.presentToast(err);
-	    });
+  	    this.presentLoading();
+  	    fileTransfer.upload(path, globalData.serviceUrl+'file_upload', options)
+  	      .then((data) => {
+  	      console.log(data+" Uploaded Successfully");
+  	      this.presentToast('PDF Uploaded Successfully');
+  	      console.log(JSON.parse(data.response));
+  	      let res = JSON.parse(data.response);
+  	      if (res.status == true) {
+  	        this.newfile = res.data;
+  	        this.loader.dismiss();
+  	      }      
+  	    }, (err) => {
+  	      console.log(err);
+  	      this.loader.dismiss();
+  	      this.presentToast(err);
+  	    });
     } 
 
   editCase(){
@@ -115,14 +117,14 @@ newfile:any;
 
   	this.presentLoading();
     this.headers = {'Content-Type': 'application/json'}; 
-    this.http.post(globalData.serviceUrl + 'update', JSON.stringify(updateobj), {headers: this.headers})
+    this.http.post(globalData.serviceUrl + 'update/'+this.navParams.get('editObj').id, JSON.stringify(updateobj), {headers: this.headers})
     .map(res => res.json())
     .subscribe(data => {
       console.log(data);
         if (data.status == true) {
           this.loader.dismiss();
           this.presentToast(data.message);
-          this.navCtrl.setRoot('HomePage');
+          this.navCtrl.setRoot(HomePage);
         }
         else{
           this.loader.dismiss();
