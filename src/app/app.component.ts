@@ -33,6 +33,7 @@ myData:any;
 
 
   checkLogin(){
+    this.pushSetup();
     this.storage.get('userObject').then((val)=>{
         if(val != null || val != undefined){
           this.nav.setRoot('MenuPage');
@@ -42,26 +43,8 @@ myData:any;
   }
 
 
-push(){
-  this.fcm.subscribeToTopic('marketing');
-
-this.fcm.getToken().then(token => {
-  //backend.registerToken(token);
-});
-
-this.fcm.onNotification().subscribe(data => {
-  if(data.wasTapped){
-    console.log("Received in background");
-  } else {
-    console.log("Received in foreground");
-  };
-});
-
-this.fcm.onTokenRefresh().subscribe(token => {
-  //backend.registerToken(token);
-});
-
-this.fcm.unsubscribeFromTopic('marketing');
+pushSetup(){
+  this.fcm.subscribeToTopic('all');
 }
 
 }

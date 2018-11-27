@@ -7,7 +7,7 @@ import { IonicPage, NavController, Nav } from 'ionic-angular';
 import { Storage } from '@ionic/storage';
 import { globalData } from '../../helper/helper';
 import { Events } from 'ionic-angular';
-
+import { FCM } from '@ionic-native/fcm';
 
 export interface PageInterface {
   title: string;
@@ -38,7 +38,7 @@ export class MenuPage {
     { title: 'New Case', pageName: 'NewcasePage', icon: 'shuffle' },
   ];
  
-  constructor(public navCtrl: NavController,  private storage:Storage, public events: Events) { 
+  constructor(public navCtrl: NavController,  private storage:Storage, public events: Events, private fcm: FCM,) { 
     this.getmydata();
     this.imgUrl = globalData.imagesUrl;
   }
@@ -96,6 +96,7 @@ getmydata(){
   logOut(){
     this.storage.clear();
     this.rootPage = 'LoginPage';
+    this.fcm.unsubscribeFromTopic('all');
   }
  
 }
